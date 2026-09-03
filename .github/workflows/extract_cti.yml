@@ -5,7 +5,6 @@ on:
     - cron: '0 */8 * * *'
   workflow_dispatch:
 
-# ⭐ 关键：给 GITHUB_TOKEN 增加写入权限
 permissions:
   contents: write
 
@@ -17,12 +16,14 @@ jobs:
       - name: 检出仓库
         uses: actions/checkout@v4
 
-      - name: 下载并提取中天新闻台URL
+      - name: 下载并提取所有中天频道URL
         run: |
           curl -s -o source.m3u https://raw.githubusercontent.com/692873350/iptv-sync/refs/heads/main/iptv_source.m3u
-          grep -A1 'tvg-name="中天新闻台"' source.m3u | grep -E '^http' | head -1 > cti_url.txt
+          # 提取所有 tvg-name 中包含 "中天" 的频道 URL（不限制数量）
+          grep -A1 'tvg-name=".*中天.*"' source.m3u | grep -E '^http' > cti_url.txt
+          # 如果没提取到任何 URL，写入提示
           if [ ! -s cti_url.txt ]; then
-            echo "未找到中天新闻台URL，请检查源文件" > cti_url.txt
+            echo "未找到任何中天频道URL，请检查源文件" > cti_url.txt
           fi
 
       - name: 提交并推送更新
@@ -30,5 +31,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add cti_url.txt
-          git diff --staged --quiet || git commit -m "自动更新中天新闻台URL $(date +'%Y-%m-%d %H:%M:%S')"
+          git diff --staged --quiet || git commit -m "自动更新所有中天频道URL $(date +'%Y-%m-%d %H:%M:%S')"
           git push
