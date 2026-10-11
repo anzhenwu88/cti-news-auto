@@ -1,9 +1,9 @@
 #EXTINF:-1 tvg-id="" tvg-name="中天新闻" tvg-logo="",group-title="港澳台频道",中天新闻
-http://45.192.97.170:8880/play/1165.m3u8
+http://45.192.97.170:8880/play/987.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="中天新闻" tvg-logo="",group-title="港澳台频道",中天新闻
-http://45.192.97.170:8880/play/1190.m3u8
+http://45.192.97.170:8880/play/1012.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="中天新闻台" tvg-logo="",group-title="港澳台频道",中天新闻台
-http://45.192.97.170:8880/play/1235.m3u8
+http://45.192.97.170:8880/play/1057.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="中天新闻" tvg-logo="",group-title="港澳台频道",中天新闻
 https://d2jc41c1shgcol.cloudfront.net/live/CtiNEWS1/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="中天新闻" tvg-logo="",group-title="港澳台频道",中天新闻
